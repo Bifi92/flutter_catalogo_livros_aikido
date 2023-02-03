@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "161739963411",
+    "project_id": "catalogo-de-livros-aikido",
+    "storage_bucket": "catalogo-de-livros-aikido.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:161739963411:android:4ba0e5f230962fb52353e6",
+        "android_client_info": {
+          "package_name": "com.example.catalogo_livro_aikido"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "161739963411-t5l9d0brtq04os2hjnnmv4hudu6bu45u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCcduG4___O6YDkbaGAWNmdLn1SVIq_enA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "161739963411-t5l9d0brtq04os2hjnnmv4hudu6bu45u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
