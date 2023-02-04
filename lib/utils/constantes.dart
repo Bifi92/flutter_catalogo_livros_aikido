@@ -2,6 +2,7 @@
 const String L_FORMADO_DATA = "dd/MM/yyyy";
 const String L_SIM = "SIM";
 const String L_NAO = "NAO";
+const String L_CARREGAR_IMAGEM = 'Carregar Imagem';
 
 // Erros
 const String E_CAMPO_OBRIGATORIO = "Campo obrigatório";
@@ -18,6 +19,7 @@ const String C_LIVRO_NOME = "nome";
 const String C_LIVRO_AUTOR = "autor";
 const String C_LIVRO_OBSERVACAO = "observacao";
 const String C_LIVRO_EMPRESTADO = "emprestado";
+const String C_LIVRO_NOME_FOTO = "nomeFoto";
 // Pessoas
 const String C_PESSOA_ID = "id";
 const String C_PESSOA_NOME = "nome";
@@ -32,6 +34,7 @@ const String C_EMPRESTIMO_PESSOA_NOME = "nomePessoa";
 const String C_EMPRESTIMO_DATA_RETIRADA = "dataRetirada";
 const String C_EMPRESTIMO_DATA_DEVOLUCAO = "dataDevolucao";
 const String C_EMPRESTIMO_PESSOA_TELEFONE = "telefonePessoa";
+const String C_EMPRESTIMO_LIVRO_NOME_FOTO = "nomeFotoLivro";
 
 // Labels
 const String L_VAZIO = "";

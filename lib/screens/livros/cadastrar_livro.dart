@@ -3,6 +3,8 @@ import 'package:catalogo_livro_aikido/models/livro.dart';
 import 'package:catalogo_livro_aikido/utils/constantes.dart';
 import 'package:flutter/material.dart';
 
+import '../../utils/widgets/image_picker_custom.dart';
+
 class CadastrarLivroScreen extends StatelessWidget {
   const CadastrarLivroScreen({super.key});
 
@@ -17,6 +19,9 @@ class CadastrarLivroScreen extends StatelessWidget {
   static final TextEditingController observacaoTextFormFieldController =
       TextEditingController();
 
+  static final TextEditingController nomeArquivoTextFormFieldController =
+      TextEditingController();
+
   onSalvar(BuildContext context) {
     formKey.currentState?.validate();
     salvarLivro(
@@ -26,6 +31,7 @@ class CadastrarLivroScreen extends StatelessWidget {
         autor: autorTextFormFieldController.text,
         observacao: observacaoTextFormFieldController.text,
         emprestado: L_NAO,
+        nomeFoto: nomeArquivoTextFormFieldController.text,
       ),
     );
     Navigator.pop(context);
@@ -35,6 +41,7 @@ class CadastrarLivroScreen extends StatelessWidget {
     nomeTextFormFieldController.text = "";
     autorTextFormFieldController.text = "";
     observacaoTextFormFieldController.text = "";
+    nomeArquivoTextFormFieldController.text = DateTime.now().toString();
   }
 
   @override
@@ -51,6 +58,10 @@ class CadastrarLivroScreen extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: Column(
               children: [
+                ImagePickerCustomWidget(
+                  usaBotoes: true,
+                  nomeFoto: nomeArquivoTextFormFieldController.text,
+                ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: TextFormField(

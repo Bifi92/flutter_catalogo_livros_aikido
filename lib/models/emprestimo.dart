@@ -10,6 +10,7 @@ class EmprestimoModel {
   late String telefonePessoa;
   late DateTime dataRetirada;
   late DateTime dataDevolucao;
+  late String nomeFotoLivro;
 
   EmprestimoModel({
     required this.id,
@@ -20,6 +21,7 @@ class EmprestimoModel {
     required this.telefonePessoa,
     required this.dataRetirada,
     required this.dataDevolucao,
+    required this.nomeFotoLivro,
   });
 
   static mapToObjectList(
@@ -42,6 +44,7 @@ class EmprestimoModel {
       telefonePessoa: doc[C_EMPRESTIMO_PESSOA_TELEFONE],
       dataRetirada: doc[C_EMPRESTIMO_DATA_RETIRADA].toDate(),
       dataDevolucao: doc[C_EMPRESTIMO_DATA_DEVOLUCAO].toDate(),
+      nomeFotoLivro: doc[C_EMPRESTIMO_LIVRO_NOME_FOTO],
     );
   }
 
@@ -55,6 +58,7 @@ class EmprestimoModel {
       C_EMPRESTIMO_PESSOA_TELEFONE: telefonePessoa,
       C_EMPRESTIMO_DATA_RETIRADA: dataRetirada,
       C_EMPRESTIMO_DATA_DEVOLUCAO: dataDevolucao,
+      C_EMPRESTIMO_LIVRO_NOME_FOTO: nomeFotoLivro,
     };
   }
 }

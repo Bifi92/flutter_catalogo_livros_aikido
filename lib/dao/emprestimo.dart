@@ -16,6 +16,7 @@ Future<void> salvarEmprestimo(EmprestimoModel emprestimo) async {
     C_EMPRESTIMO_PESSOA_TELEFONE: emprestimo.telefonePessoa,
     C_EMPRESTIMO_DATA_RETIRADA: emprestimo.dataRetirada,
     C_EMPRESTIMO_DATA_DEVOLUCAO: emprestimo.dataDevolucao,
+    C_EMPRESTIMO_LIVRO_NOME_FOTO: emprestimo.nomeFotoLivro,
   });
 }
 

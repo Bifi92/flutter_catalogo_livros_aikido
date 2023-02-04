@@ -45,6 +45,7 @@ Future<void> salvarLivro(LivroModel livro) async {
       C_LIVRO_AUTOR: livro.autor,
       C_LIVRO_OBSERVACAO: livro.observacao,
       C_LIVRO_EMPRESTADO: livro.emprestado,
+      C_LIVRO_NOME_FOTO: livro.nomeFoto
     });
   }
 }

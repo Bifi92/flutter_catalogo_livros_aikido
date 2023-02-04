@@ -13,7 +13,8 @@ class DashboardPessoaScreen extends StatelessWidget {
       nome: L_VAZIO,
       autor: L_VAZIO,
       observacao: L_VAZIO,
-      emprestado: L_NAO);
+      emprestado: L_NAO,
+      nomeFoto: L_VAZIO);
 
   void initData(BuildContext context) {
     LivroModel livro = ModalRoute.of(context)!.settings.arguments as LivroModel;
@@ -21,6 +22,7 @@ class DashboardPessoaScreen extends StatelessWidget {
     livroSelecionado.nome = livro.nome;
     livroSelecionado.autor = livro.autor;
     livroSelecionado.observacao = livro.observacao;
+    livroSelecionado.nomeFoto = livro.nomeFoto;
   }
 
   @override

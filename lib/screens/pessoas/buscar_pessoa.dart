@@ -21,7 +21,8 @@ class _BuscarPessoaScreenState extends State<BuscarPessoaScreen> {
       nome: L_VAZIO,
       autor: L_VAZIO,
       observacao: L_VAZIO,
-      emprestado: L_NAO);
+      emprestado: L_NAO,
+      nomeFoto: L_VAZIO);
 
   void initData(BuildContext context) {
     LivroModel livro = ModalRoute.of(context)!.settings.arguments as LivroModel;

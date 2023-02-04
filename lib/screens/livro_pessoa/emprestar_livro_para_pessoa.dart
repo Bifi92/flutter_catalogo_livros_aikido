@@ -34,6 +34,9 @@ class EmprestarLivroParaPessoaScreen extends StatelessWidget {
   static final TextEditingController telefonePessoaTextFormFieldController =
       TextEditingController();
 
+  static final TextEditingController nomeFotoLivroTextFormFieldController =
+      TextEditingController();
+
   onSalvar(BuildContext context) {
     formKey.currentState?.validate();
     emprestarLivro(idLivroTextFormFieldController.text);
@@ -46,6 +49,7 @@ class EmprestarLivroParaPessoaScreen extends StatelessWidget {
       telefonePessoa: telefonePessoaTextFormFieldController.text,
       dataRetirada: DateTime.parse(dataRetiradaTextFormFieldController.text),
       dataDevolucao: DateTime.parse(dataDevolucaoTextFormFieldController.text),
+      nomeFotoLivro: nomeFotoLivroTextFormFieldController.text,
     ));
 
     Navigator.pushNamedAndRemoveUntil(
@@ -65,6 +69,7 @@ class EmprestarLivroParaPessoaScreen extends StatelessWidget {
     nomeLivroTextFormFieldController.text = livro.nome;
     dataRetiradaTextFormFieldController.text = DateTime.now().toString();
     dataDevolucaoTextFormFieldController.text = "";
+    nomeFotoLivroTextFormFieldController.text = livro.nomeFoto;
   }
 
   @override

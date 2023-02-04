@@ -7,6 +7,7 @@ class LivroModel {
   late String autor;
   late String observacao;
   late String emprestado;
+  late String nomeFoto;
 
   LivroModel({
     required this.id,
@@ -14,6 +15,7 @@ class LivroModel {
     required this.autor,
     required this.observacao,
     required this.emprestado,
+    required this.nomeFoto,
   });
 
   static mapToObjectList(
@@ -33,6 +35,7 @@ class LivroModel {
       autor: doc[C_LIVRO_AUTOR],
       observacao: doc[C_LIVRO_OBSERVACAO],
       emprestado: doc[C_LIVRO_EMPRESTADO],
+      nomeFoto: doc[C_LIVRO_NOME_FOTO],
     );
   }
 
@@ -43,6 +46,7 @@ class LivroModel {
       autor: doc[C_LIVRO_AUTOR],
       observacao: doc[C_LIVRO_OBSERVACAO],
       emprestado: doc[C_LIVRO_EMPRESTADO],
+      nomeFoto: doc[C_LIVRO_NOME_FOTO],
     );
   }
 
@@ -52,7 +56,8 @@ class LivroModel {
       C_LIVRO_NOME: nome,
       C_LIVRO_AUTOR: autor,
       C_LIVRO_OBSERVACAO: observacao,
-      C_LIVRO_EMPRESTADO: emprestado
+      C_LIVRO_EMPRESTADO: emprestado,
+      C_LIVRO_NOME_FOTO: nomeFoto,
     };
   }
 }
