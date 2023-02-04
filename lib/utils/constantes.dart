@@ -1,8 +1,11 @@
+// ignore_for_file: constant_identifier_names
+
 // Geral
 const String L_FORMADO_DATA = "dd/MM/yyyy";
 const String L_SIM = "SIM";
 const String L_NAO = "NAO";
 const String L_CARREGAR_IMAGEM = 'Carregar Imagem';
+const String L_CAMINHO_IMAGEM = '/Imagem/<NOME>.jpg';
 
 // Erros
 const String E_CAMPO_OBRIGATORIO = "Campo obrigatório";

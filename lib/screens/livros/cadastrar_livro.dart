@@ -80,6 +80,7 @@ class CadastrarLivroScreen extends StatelessWidget {
                       if (value!.isEmpty) {
                         return E_CAMPO_OBRIGATORIO;
                       }
+                      return null;
                     },
                   ),
                 ),
@@ -101,6 +102,7 @@ class CadastrarLivroScreen extends StatelessWidget {
                       if (value!.isEmpty) {
                         return E_CAMPO_OBRIGATORIO;
                       }
+                      return null;
                     },
                   ),
                 ),

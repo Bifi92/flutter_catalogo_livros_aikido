@@ -79,6 +79,7 @@ class EditarPessoaScreen extends StatelessWidget {
                       if (value!.isEmpty) {
                         return E_CAMPO_OBRIGATORIO;
                       }
+                      return null;
                     },
                   ),
                 ),
@@ -100,6 +101,7 @@ class EditarPessoaScreen extends StatelessWidget {
                       if (value!.isEmpty) {
                         return E_CAMPO_OBRIGATORIO;
                       }
+                      return null;
                     },
                   ),
                 ),
@@ -121,6 +123,7 @@ class EditarPessoaScreen extends StatelessWidget {
                       if (value!.isEmpty) {
                         return E_CAMPO_OBRIGATORIO;
                       }
+                      return null;
                     },
                   ),
                 ),

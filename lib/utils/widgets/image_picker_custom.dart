@@ -1,17 +1,15 @@
 import 'dart:io';
-
 import 'package:catalogo_livro_aikido/utils/constantes.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:path_provider/path_provider.dart';
 
 class ImagePickerCustomWidget extends StatefulWidget {
-  const ImagePickerCustomWidget(
-      {required this.usaBotoes, required this.nomeFoto, super.key});
+  const ImagePickerCustomWidget({
+    required this.usaBotoes,
+    required this.nomeFoto,
+    super.key,
+  });
 
   final bool usaBotoes;
 
@@ -23,8 +21,8 @@ class ImagePickerCustomWidget extends StatefulWidget {
 }
 
 class _ImagePickerCustomWidgetState extends State<ImagePickerCustomWidget> {
-  String _imagemUrl = '';
-  var storage = FirebaseStorage.instance;
+  String _imagemUrl = L_VAZIO;
+  final FirebaseStorage _storage = FirebaseStorage.instance;
 
   @override
   initState() {
@@ -32,20 +30,21 @@ class _ImagePickerCustomWidgetState extends State<ImagePickerCustomWidget> {
     initImage();
   }
 
-  initImage() async {
-    try {
-      String imageUrl = await storage
-          .ref()
-          .child('/Imagem/${widget.nomeFoto}.jpg')
-          .getDownloadURL();
+  void atualizarState(String url) {
+    setState(() {
+      _imagemUrl = url;
+    });
+  }
 
-      setState(() {
-        _imagemUrl = imageUrl;
-      });
+  void initImage() async {
+    try {
+      String imageUrl = await _storage
+          .ref()
+          .child(L_CAMINHO_IMAGEM.replaceAll('<NOME>', widget.nomeFoto))
+          .getDownloadURL();
+      atualizarState(imageUrl);
     } catch (e) {
-      setState(() {
-        _imagemUrl = '';
-      });
+      atualizarState(L_VAZIO);
     }
   }
 
@@ -55,15 +54,13 @@ class _ImagePickerCustomWidgetState extends State<ImagePickerCustomWidget> {
 
     if (imagemMobile == null) return;
 
-    TaskSnapshot snapshot = await storage
+    TaskSnapshot snapshot = await _storage
         .ref()
-        .child('/Imagem/${widget.nomeFoto}.jpg')
+        .child(L_CAMINHO_IMAGEM.replaceAll('<NOME>', widget.nomeFoto))
         .putFile(File(imagemMobile.path));
     if (snapshot.state == TaskState.success) {
       String url = await snapshot.ref.getDownloadURL();
-      setState(() {
-        _imagemUrl = url;
-      });
+      atualizarState(url);
     }
   }
 
@@ -73,7 +70,7 @@ class _ImagePickerCustomWidgetState extends State<ImagePickerCustomWidget> {
       children: [
         Padding(
           padding: const EdgeInsets.all(8.0),
-          child: _imagemUrl == ''
+          child: _imagemUrl == L_VAZIO
               ? const Icon(
                   Icons.camera_alt,
                   size: 300,
@@ -88,7 +85,9 @@ class _ImagePickerCustomWidgetState extends State<ImagePickerCustomWidget> {
             ? Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: ElevatedButton(
-                    onPressed: _getImage, child: const Text(L_CARREGAR_IMAGEM)),
+                  onPressed: _getImage,
+                  child: const Text(L_CARREGAR_IMAGEM),
+                ),
               )
             : Container(),
       ],

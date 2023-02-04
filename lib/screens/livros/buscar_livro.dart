@@ -1,7 +1,6 @@
 import 'package:catalogo_livro_aikido/dao/livro.dart';
 import 'package:catalogo_livro_aikido/models/livro.dart';
 import 'package:catalogo_livro_aikido/utils/constantes.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class BuscarLivroScreen extends StatefulWidget {
@@ -12,7 +11,7 @@ class BuscarLivroScreen extends StatefulWidget {
 }
 
 class _BuscarLivroScreenState extends State<BuscarLivroScreen> {
-  String nome = "";
+  String nome = L_VAZIO;
   @override
   Widget build(BuildContext context) {
     return Scaffold(

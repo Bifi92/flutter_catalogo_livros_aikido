@@ -3,8 +3,6 @@ import 'package:catalogo_livro_aikido/utils/constantes.dart';
 import 'package:catalogo_livro_aikido/utils/widgets/image_picker_custom.dart';
 import 'package:date_time_picker/date_time_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 
 class DetalheLivroEmprestadoScreen extends StatelessWidget {
   const DetalheLivroEmprestadoScreen({super.key});
@@ -51,9 +49,10 @@ class DetalheLivroEmprestadoScreen extends StatelessWidget {
       body: Column(
         children: [
           Center(
-              child: ImagePickerCustomWidget(
-                  usaBotoes: false,
-                  nomeFoto: nomeFotoLivroTextFormFieldController.text)),
+            child: ImagePickerCustomWidget(
+                usaBotoes: false,
+                nomeFoto: nomeFotoLivroTextFormFieldController.text),
+          ),
           Row(
             children: [
               Expanded(

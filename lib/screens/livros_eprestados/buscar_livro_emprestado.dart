@@ -1,9 +1,7 @@
 import 'package:catalogo_livro_aikido/dao/emprestimo.dart';
 import 'package:catalogo_livro_aikido/dao/livro.dart';
 import 'package:catalogo_livro_aikido/models/emprestimo.dart';
-import 'package:catalogo_livro_aikido/models/livro.dart';
 import 'package:catalogo_livro_aikido/utils/constantes.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class BuscarLivroEmprestadoScreen extends StatefulWidget {
@@ -16,11 +14,33 @@ class BuscarLivroEmprestadoScreen extends StatefulWidget {
 
 class _BuscarLivroEmprestadoScreenState
     extends State<BuscarLivroEmprestadoScreen> {
-  String nome = "";
+  String nome = L_VAZIO;
 
   void onDevolver(EmprestimoModel emprestimo) {
     devolverLivro(emprestimo.idLivro);
     deletarEmprestimo(emprestimo);
+  }
+
+  Color? defineCor(EmprestimoModel emprestimo) {
+    DateTime dataAtual = DateTime.now();
+
+    bool faltaUmaSemana = emprestimo.dataDevolucao
+        .isBefore(dataAtual.add(const Duration(days: 7)));
+
+    bool atrasado = emprestimo.dataDevolucao.isBefore(dataAtual);
+
+    bool alteraCor = faltaUmaSemana || atrasado;
+
+    Color corTexto = Colors.black;
+
+    if (faltaUmaSemana) {
+      corTexto = Colors.yellow.shade800;
+    }
+
+    if (atrasado) {
+      corTexto = Colors.red;
+    }
+    return alteraCor ? corTexto : null;
   }
 
   @override
@@ -69,37 +89,14 @@ class _BuscarLivroEmprestadoScreenState
                     child: Text(L_NENHUM_LIVRO_ENCONTRADO),
                   );
                 } else {
-                  DateTime dataAtual = DateTime.now();
                   return SafeArea(
                     child: ListView.builder(
                       itemCount: snapshot.data!.length,
                       itemBuilder: (context, index) {
                         List<EmprestimoModel> emprestimos = snapshot.data!;
 
-                        bool faltaUmaSemana = emprestimos
-                            .elementAt(index)
-                            .dataDevolucao
-                            .isBefore(dataAtual.add(const Duration(days: 7)));
-
-                        bool atrasado = emprestimos
-                            .elementAt(index)
-                            .dataDevolucao
-                            .isBefore(dataAtual);
-
-                        bool alteraCor = faltaUmaSemana || atrasado;
-
-                        Color corTexto = Colors.black;
-
-                        if (faltaUmaSemana) {
-                          corTexto = Colors.yellow.shade800;
-                        }
-
-                        if (atrasado) {
-                          corTexto = Colors.red;
-                        }
-
                         return ListTile(
-                          textColor: alteraCor ? corTexto : null,
+                          textColor: defineCor(emprestimos.elementAt(index)),
                           title: Text(
                               '$L_LIVRO: ${emprestimos.elementAt(index).nomeLivro}'),
                           subtitle: Text(
