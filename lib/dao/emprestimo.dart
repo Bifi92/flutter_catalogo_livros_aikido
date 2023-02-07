@@ -30,7 +30,8 @@ Stream<QuerySnapshot<Map<String, dynamic>>> getLivrosEmprestados() {
 Future<List<EmprestimoModel>> getLivrosEmprestadosPorNomeDoLivro(String nome) {
   return _firestore
       .collection(C_EMPRESTIMO)
-      .where(C_EMPRESTIMO_LIVRO_NOME, isEqualTo: nome)
+      .where(C_EMPRESTIMO_LIVRO_NOME,
+          isGreaterThanOrEqualTo: nome, isLessThanOrEqualTo: '${nome}z')
       .get()
       .then((QuerySnapshot<Map<String, dynamic>> snapshot) async {
     if (snapshot.docs.isEmpty) return [];

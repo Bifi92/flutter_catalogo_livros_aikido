@@ -16,7 +16,8 @@ Future<List<LivroModel>> getLivrosPorNome(String nome) {
   return _firestore
       .collection(C_LIVRO)
       .where(C_LIVRO_EMPRESTADO, isEqualTo: L_NAO)
-      .where(C_LIVRO_NOME, isEqualTo: nome)
+      .where(C_LIVRO_NOME,
+          isGreaterThanOrEqualTo: nome, isLessThanOrEqualTo: '${nome}z')
       .get()
       .then((QuerySnapshot<Map<String, dynamic>> snapshot) async {
     if (snapshot.docs.isEmpty) return [];

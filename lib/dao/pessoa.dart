@@ -14,7 +14,8 @@ Stream<QuerySnapshot<Map<String, dynamic>>> getPessoas() {
 Future<List<PessoaModel>> getPessoasPorNome(String nome) {
   return _firestore
       .collection(C_PESSOA)
-      .where(C_PESSOA_NOME, isEqualTo: nome)
+      .where(C_PESSOA_NOME,
+          isGreaterThanOrEqualTo: nome, isLessThanOrEqualTo: '${nome}z')
       .get()
       .then((QuerySnapshot<Map<String, dynamic>> snapshot) async {
     if (snapshot.docs.isEmpty) return [];
